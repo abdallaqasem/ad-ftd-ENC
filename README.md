@@ -10,5 +10,6 @@ To run this code:
 4) write "cd ad-ftd-ENC" to enter the project environment
 5) write "pip install -r requirements.txt" to downloads all required libraries for the code
 6) wait till it is DONE
-7) write "python src/train_model.py" to show you the results of internally & externally validated developed ML prediction model 
+7) write "python data/generate_data.py" to create MOCK data 
+8) write "python src/train_model.py" to show you the results of internally & externally validated developed ML prediction model 
 
