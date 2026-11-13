@@ -11,5 +11,5 @@ To run this code:
 5) write "pip install -r requirements.txt" to downloads all required libraries for the code
 6) wait till it is DONE
 7) write "python data/generate_data.py" to create MOCK data 
-8) write "python src/train_model.py" to show you the results of internally & externally validated developed ML prediction model 
+8) write "python src/train_model.py" to develop ML prediction model & show you the results of its internal & external validations
 
