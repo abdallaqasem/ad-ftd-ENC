@@ -8,8 +8,9 @@ To run this code:
    - click "New terminal"
    - write "git clone https://github.com/bobalqasem-crypto/ad-ftd-ENC.git" in terminal
 4) write "cd ad-ftd-ENC" to enter the project environment
-5) write "pip install -r requirements.txt" to downloads all required libraries for the code
-6) wait till it is DONE
-7) write "python data/generate_data.py" to create MOCK data 
-8) write "python src/train_model.py" to develop ML prediction model & show you the results of its internal & external validations
+5) write "python -m venv .venv" to create a virtual environment 
+7) write "pip install -r requirements.txt" to downloads all required libraries for the code
+8) wait till it is DONE
+9) write "python data/generate_data.py" to create MOCK data 
+10) write "python src/train_model.py" to develop ML prediction model & show you the results of its internal & external validations
 
