@@ -230,3 +230,20 @@ venv/
 # IDE setting
 .vscode/
 .idea/
+
+
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.xlsx
+*.xls
+*.sav
+*.dta
+*.rds
+*.pkl
+output/
+results/
+
+# The synthetic generator itself is source, not data
+!data/generate_data.py
