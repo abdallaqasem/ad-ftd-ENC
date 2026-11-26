@@ -29,7 +29,11 @@ if __name__ == "__main__":
     y = y.loc[valid_idx]
     
     x_train, x_test, y_train, y_test = perform_train_test_split(x, y)
-    x_train_processed, x_test_processed = impute_and_scale(x_train, x_test)
+    
+    preprocessor = get_preprocessor()
+    x_train_processed = preprocessor.fit_transform(x_train)
+    x_test_processed = preprocessor.transform(x_test)
+
     
     print("\nProcessed Training Features Preview:")
     print(x_train_processed.head(3))
