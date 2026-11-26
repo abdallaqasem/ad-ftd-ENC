@@ -85,18 +85,18 @@ if __name__ == "__main__":
     features_weights(model, x_train.columns.tolist())
 
     #########################
-    # external validation #
-    # create data
-    import sys
-    from pathlib import Path
-    sys.path.append(str(Path(__file__).resolve().parent.parent))
-    from data.generate_data import generate
+    # Replication on an independent draw from the SAME generator.
+    # This is a leakage and stability check, NOT external validation:
+    # the data-generating process is identical, only the seed differs.
+    from pathlib import Path as _Path
+    out_dir = _Path(__file__).resolve().parent.parent / "output"
+    out_dir.mkdir(exist_ok=True)
+    replicate_path = out_dir / "replicate_data.parquet"
 
     data = generate(100000, seed=99)
-    data.to_parquet("src/external_data.parquet", engine="pyarrow", index=False)
-    
-    # load 
-    df = load_data("src/external_data.parquet")
+    data.to_parquet(replicate_path, engine="pyarrow", index=False)
+
+    df = load_data(str(replicate_path))
     x, y = split_features_and_target(df, target_col="dx_ftd")
     valid_idx = y.dropna().index
     x, y = x.loc[valid_idx], y.loc[valid_idx]
