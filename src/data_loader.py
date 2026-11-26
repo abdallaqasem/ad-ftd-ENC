@@ -5,7 +5,7 @@ def load_data(filepath: str = "data/mock9.parquet") -> pd.DataFrame:
     path = Path(filepath)
     if not path.exists():
         raise FileNotFoundError(
-            f"Dataset not found at {path}. Please run generate_mock_data.py first."
+            f"Dataset not found at {path}. Please run generate_data.py first."
         )
     
     df = pd.read_parquet(path)
