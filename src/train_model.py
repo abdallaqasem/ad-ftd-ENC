@@ -93,8 +93,12 @@ if __name__ == "__main__":
     sys.path.append(str(_Path(__file__).resolve().parent.parent))
     from data.generate_data import generate
 
+    out_dir = _Path(__file__).resolve().parent.parent / "output"
+    out_dir.mkdir(exist_ok=True)
+    replicate_path = out_dir / "replicate_data.parquet"
+
     data = generate(100000, seed=99)
-    data.to_parquet("src/replicate_path.parquet", engine="pyarrow", index=False)
+    data.to_parquet(replicate_path, engine="pyarrow", index=False)
 
     df = load_data(str(replicate_path))
     x, y = split_features_and_target(df, target_col="dx_ftd")
