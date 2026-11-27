@@ -88,13 +88,13 @@ if __name__ == "__main__":
     # Replication on an independent draw from the SAME generator.
     # This is a leakage and stability check, NOT external validation:
     # the data-generating process is identical, only the seed differs.
+    import sys
     from pathlib import Path as _Path
-    out_dir = _Path(__file__).resolve().parent.parent / "output"
-    out_dir.mkdir(exist_ok=True)
-    replicate_path = out_dir / "replicate_data.parquet"
+    sys.path.append(str(_Path(__file__).resolve().parent.parent))
+    from data.generate_data import generate
 
     data = generate(100000, seed=99)
-    data.to_parquet(replicate_path, engine="pyarrow", index=False)
+    data.to_parquet("src/replicate_path.parquet", engine="pyarrow", index=False)
 
     df = load_data(str(replicate_path))
     x, y = split_features_and_target(df, target_col="dx_ftd")
